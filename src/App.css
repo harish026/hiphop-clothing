@@ -1,8 +1,11 @@
 body{
     font-family: fantasy;
-    padding: 20px 60px; 
+    padding: 10px 50px; 
 }
 a{
     text-decoration: none;
     color: black;
+}
+*{
+    box-sizing: border-box;
 }

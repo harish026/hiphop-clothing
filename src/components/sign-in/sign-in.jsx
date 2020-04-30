@@ -48,10 +48,10 @@ class SignIn extends React.Component{
                     <div className='buttons'>
                         <Button type='submit' value='submit'>Sign in</Button>
                         <br/>
-                        <center><p>or</p></center>
+                        <center><p>or <br/><br/></p></center>
                         <br/>
                         <br/>
-                        <Button onClick={signInWithGoogle} >signinwithgoogle</Button>
+                        <Button  type='button' onClick={signInWithGoogle} >signinwithgoogle</Button>
                     </div>
                     
                  </form>

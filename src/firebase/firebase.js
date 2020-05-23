@@ -14,25 +14,28 @@ const config={
   };
   
 
-  export const createUserdoc=async (userAuth,additionaldata)=>{
-    if(!userAuth)return;
+  export const createUserdoc=async (userAuth,additionalData)=>{
+    //console.log(userAuth);
+    //console.log(additionalData)
+    if(!userAuth) return;
 
-    const userref=firestore.doc('user/'+userAuth.uid);
+    const userref=firestore.doc('users/'+userAuth.uid);
     const snap= await userref.get();
+    //console.log(snap);
     if(!snap.exists){
-      const {displayname,email} = userAuth;
+      const {displayName,email} = userAuth;
       const createdAt= new Date();
 
       try{
         await userref.set({
-          displayname,
+          displayName,
           email,
           createdAt,
-          ...additionaldata
+          ...additionalData
         })
       }
       catch(error){
-        console.log('error creating user',error.message);
+        console.log('error while creating user',error.message);
       }
     }
     return userref;

@@ -4,9 +4,8 @@ import './collection-item.scss';
 const Collectionitem =({id,name,price,imageUrl})=>(
     <div className='collection-item'>
         <div className='image'
-        style={{backgroundImage: 'url('+imageUrl+')'}} >
-
-        </div>
+        style={{backgroundImage: 'url('+imageUrl+')'}}></div>
+        
         <div className='collection-footer'>
             <span className='name'>{name}</span>
             <span className='price'>{price}</span>

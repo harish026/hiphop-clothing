@@ -5,7 +5,7 @@ import Shoppage from './page components/shop/shop.components';
 import Header from './components/header/headercompo';
 import Signin from './page components/signin/signin' ;
 import { Switch,Route } from 'react-router-dom';
-import {auth,createUserdoc} from './firebase/filebase';
+import {auth,createUserdoc} from './firebase/firebase';
 
 class App extends React.Component {
   constructor(){
@@ -15,15 +15,28 @@ class App extends React.Component {
     };
     
   }
-  unsubscribefromauth=null;
+  unsubscribeFromAuth=null;
   componentDidMount() {
-    this.unsubscribefromauth=auth.onAuthStateChanged(async user=>{
-      createUserdoc(user);
+    this.unsubscribeFromAuth=auth.onAuthStateChanged(async userAuth=>{
+      if (userAuth){
+        const userref=await createUserdoc(userAuth);
+
+        userref.onSnapshot(snapShot =>{
+          this.setState({
+            currentUser:{
+              id:snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        });
+      }
+      this.setState({currentUser:userAuth});
+      //createUserdoc(user);
       //console.log(user);
     });  
   }
   componentWillUnmount(){
-    this.unsubscribefromauth();
+    this.unsubscribeFromAuth();
   }
 
   render(){

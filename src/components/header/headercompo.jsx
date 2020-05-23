@@ -2,7 +2,7 @@ import React from 'react';
 import './header.scss';
 import {ReactComponent as Logo } from '../../assets/hiphop.svg';
 import {Link} from 'react-router-dom';
-import {auth } from '../../firebase/filebase';
+import {auth } from '../../firebase/firebase';
 
 const Header =({currentUser})=>(
     <div className='header'>
@@ -13,7 +13,7 @@ const Header =({currentUser})=>(
             <Link className='option' to='/shop'>
                 SHOP
             </Link>
-            <Link className='option' to='/shop'>
+            <Link className='option' to='/contact'>
                 CONTACT
             </Link>
             {currentUser ?(

@@ -10,7 +10,6 @@ const Collection=({title,items})=>(
                 items.filter((item,ind)=>ind<4)
                 .map(({id,...itemProps})=>(
                     <Collectionitem key={id} {...itemProps}/>
-
                 ))
             }
 
